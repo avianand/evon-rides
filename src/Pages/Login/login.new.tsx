@@ -33,7 +33,7 @@ const LoginScreenForNewUser = ({ navigation }: Props) => {
       <Text variant="titleSmall" style={styles.enterPhoneLabel}>
         Enter phone number for verification
       </Text>
-      <TextInput
+      {/* <TextInput
         style={styles.enterPhoneInputBox}
         placeholder="Enter phone number"
         textContentType="telephoneNumber"
@@ -43,7 +43,7 @@ const LoginScreenForNewUser = ({ navigation }: Props) => {
         onChangeText={(text: string) => {
           setphoneNo(text.replace(/[^0-9]/g, ""));
         }}
-      />
+      /> */}
 
       {/* Based on response from api display existing or new user login form */}
       <View style={styles.buttonContainer}>
