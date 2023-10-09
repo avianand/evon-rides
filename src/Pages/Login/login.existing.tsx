@@ -1,20 +1,40 @@
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import * as React from 'react';
-import { View, Text, Button } from 'react-native';
-
+import {NativeStackScreenProps} from "@react-navigation/native-stack";
+import * as React from "react";
+import {View, Text, StyleSheet} from "react-native";
+import {Button, TextInput} from "react-native-paper";
 
 type Props = NativeStackScreenProps<any, "Login existing">;
-const LoginScreenForExistingUser = ({ navigation }: Props) => {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Continue with phone number</Text>
-        <Button
-        title="Conitnue with phone number"
-        onPress={() => navigation.navigate('Details')}
-      />
-      </View>
-    );
-  }
-  
+const LoginScreenForExistingUser = ({navigation}: Props) => {
+  const [otp, setotp] = React.useState<string>("")
 
-  export default LoginScreenForExistingUser
+  const handleOtpSubmit = async () => {
+
+  }
+  return (
+    <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
+      <Text>Enter Otp</Text>
+      <TextInput
+        style={styles.enterPhoneInputBox}
+        placeholder="Enter phone number"
+        textContentType="telephoneNumber"
+        keyboardType="phone-pad"
+        maxLength={6}
+        value={otp}
+        onChangeText={(text: string) => {
+          setotp(text.replace(/[^0-9]/g, ""));
+        }}
+      />
+      <Button mode="contained" onPress={handleOtpSubmit}>
+        Submit
+      </Button>
+    </View>
+  );
+};
+const styles = StyleSheet.create({
+  welcomeText: {
+    fontSize: 28,
+    fontWeight: "700"
+  },
+  enterPhoneInputBox: {}
+  });
+export default LoginScreenForExistingUser;

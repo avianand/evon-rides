@@ -2,6 +2,7 @@ import * as React from "react";
 import {StyleSheet, View} from "react-native";
 import {Appbar, Button, Text, TextInput} from "react-native-paper";
 import {SubmitPhone} from "../../Api/authApis";
+import { HttpStatusCode } from "axios";
 
 type Props = {
   navigation: any;
@@ -9,13 +10,20 @@ type Props = {
 
 const LoginScreen = ({navigation}: Props) => {
   const [phoneNo, setphoneNo] = React.useState<string>("");
-  
+
   const handleSubmitPhoneNumber = async () => {
     const response = await SubmitPhone(Number(phoneNo));
     console.log(
       "🚀 ~ file: login.tsx:14 ~ handleSubmitPhoneNumber ~ response:",
       response
     );
+    if(response.status === HttpStatusCode.Ok){
+      if(response.data.UserType = "login_new_user"){
+        navigation.navigate("Login new")
+      }else{
+        navigation.navigate("Login existing")
+      }
+    }
   };
   return (
     <View style={styles.container}>
