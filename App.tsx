@@ -55,10 +55,7 @@ export default function App() {
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={HomeScreenForGuestUser} />
           <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen
-            name="Login new"
-            component={LoginScreenForNewUser}
-          />
+          <Stack.Screen name="Login new" component={LoginScreenForNewUser} />
           <Stack.Screen
             name="Login existing"
             component={LoginScreenForExistingUser}

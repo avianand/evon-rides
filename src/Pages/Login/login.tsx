@@ -1,6 +1,6 @@
 import * as React from "react";
 import {StyleSheet, View} from "react-native";
-import {Appbar, Button, Text, TextInput} from "react-native-paper";
+import {Button, Text, TextInput} from "react-native-paper";
 import {SubmitPhone} from "../../Api/authApis";
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 
 const LoginScreen = ({navigation}: Props) => {
   const [phoneNo, setphoneNo] = React.useState<string>("");
-  
+
   const handleSubmitPhoneNumber = async () => {
     const response = await SubmitPhone(Number(phoneNo));
     console.log(
