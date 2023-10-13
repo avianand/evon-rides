@@ -1,29 +1,35 @@
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import * as React from 'react';
-import { Button, Text, TextInput} from "react-native-paper";
-import { StyleSheet, View } from 'react-native';
-import { useForm } from "react-hook-form";
+import {NativeStackScreenProps} from "@react-navigation/native-stack";
+import * as React from "react";
+import {Button, Text, TextInput} from "react-native-paper";
+import {StyleSheet, View} from "react-native";
+import {useForm} from "react-hook-form";
 
 type Props = NativeStackScreenProps<any, "Login new">;
 
-const LoginScreenForNewUser = ({ navigation }: Props) => {
-
-  const { control, handleSubmit, formState: { errors } } = useForm({
+const LoginScreenForNewUser = ({navigation}: Props) => {
+  const {
+    control,
+    handleSubmit,
+    formState: {errors}
+  } = useForm({
     defaultValues: {
-      firstName: '',
-      lastName: '',
-      city: '',
-      email: ''
+      firstName: "",
+      lastName: "",
+      city: "",
+      email: ""
     }
   });
 
   const handleSubmitPhoneNumber = async () => {
     // const response = await SubmitPhone(phoneNo);
-    console.log("🚀 ~ file: login.tsx:14 ~ handleSubmitPhoneNumber ~ response:")
+    console.log(
+      "🚀 ~ file: login.tsx:14 ~ handleSubmitPhoneNumber ~ response:"
+    );
+    navigation.navigate("Profile new");
   };
 
-    return (
-      <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <Text variant="displayLarge" style={styles.welcomeText}>
         Welcome,
       </Text>
@@ -56,42 +62,41 @@ const LoginScreenForNewUser = ({ navigation }: Props) => {
         </Button>
       </View>
     </View>
-    );
+  );
+};
+
+const styles = StyleSheet.create({
+  welcomeText: {
+    fontSize: 28,
+    fontWeight: "700"
+  },
+  container: {
+    flex: 1,
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+    width: "100%",
+    paddingHorizontal: 20
+  },
+  loginContinueText: {
+    fontSize: 20,
+    fontWeight: "700"
+  },
+  enterPhoneLabel: {
+    fontSize: 14,
+    fontWeight: "700",
+    marginBottom: 20
+  },
+  enterPhoneInputBox: {
+    width: "100%",
+    marginVertical: 50,
+    backgroundColor: "none"
+  },
+  buttonContainer: {
+    display: "flex",
+    width: "100%",
+    alignItems: "center",
+    marginTop: 100
   }
+});
 
-  const styles = StyleSheet.create({
-    welcomeText: {
-      fontSize: 28,
-      fontWeight: "700"
-    },
-    container: {
-      flex: 1,
-      alignItems: "flex-start",
-      justifyContent: "flex-start",
-      width: "100%",
-      paddingHorizontal: 20
-    },
-    loginContinueText: {
-      fontSize: 20,
-      fontWeight: "700"
-    },
-    enterPhoneLabel: {
-      fontSize: 14,
-      fontWeight: "700",
-      marginBottom: 20
-    },
-    enterPhoneInputBox: {
-      width: "100%",
-      marginVertical: 50,
-      backgroundColor: "none"
-    },
-    buttonContainer: {
-      display: "flex",
-      width: "100%",
-      alignItems: "center",
-      marginTop: 100
-    }
-  });
-  
-
-  export default LoginScreenForNewUser
+export default LoginScreenForNewUser;

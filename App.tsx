@@ -19,6 +19,8 @@ import {useMaterial3Theme} from "@pchmn/expo-material3-theme";
 import {useColorScheme} from "react-native";
 
 // local imports
+import ProfileNewForUser from "./src/Pages/Profile/profile.new";
+import ProfileUser from "./src/Pages/Profile/profile.user";
 import LoginScreenForNewUser from "./src/Pages/Login/login.new";
 import LoginScreenForExistingUser from "./src/Pages/Login/login.existing";
 import LoginScreen from "./src/Pages/Login/login";
@@ -56,6 +58,8 @@ export default function App() {
           <Stack.Screen name="Home" component={HomeScreenForGuestUser} />
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Login new" component={LoginScreenForNewUser} />
+          <Stack.Screen name="Profile user" component={ProfileUser} />
+          <Stack.Screen name="Profile new" component={ProfileNewForUser} />
           <Stack.Screen
             name="Login existing"
             component={LoginScreenForExistingUser}

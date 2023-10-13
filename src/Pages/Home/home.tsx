@@ -10,7 +10,9 @@ const HomeScreenForExistingUser = ({navigation}: Props) => {
   const theme = useTheme();
   return (
     <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
-      <Button buttonColor="#000000" onPress={() => navigation.navigate("Login")}>
+      <Button
+        buttonColor="#000000"
+        onPress={() => navigation.navigate("Login")}>
         Continue with phone number
       </Button>
     </View>

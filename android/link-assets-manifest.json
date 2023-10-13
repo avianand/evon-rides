@@ -72,6 +72,18 @@
     {
       "path": "assets/fonts/Montserrat-ThinItalic.ttf",
       "sha1": "f7d887fc6b50157081fd60082d20339c433f9955"
+    },
+    {
+      "path": "assets/images/avatar.png",
+      "sha1": "1d8ea54f4edc39bc9c2252335e7b9949d35ce01f"
+    },
+    {
+      "path": "assets/images/logo.svg",
+      "sha1": "4b9686c412ca7d57953a780d5a336b0239f6551c"
+    },
+    {
+      "path": "assets/images/svg.svg",
+      "sha1": "62c3f00220829d53ea1133801c6040efca2372c2"
     }
   ]
 }
