@@ -5,11 +5,10 @@ import {Button, TextInput} from "react-native-paper";
 
 type Props = NativeStackScreenProps<any, "Login existing">;
 const LoginScreenForExistingUser = ({navigation}: Props) => {
-  const [otp, setotp] = React.useState<string>("")
+  const [otp, setotp] = React.useState<string>("");
 
-  const handleOtpSubmit = async () => {
+  const handleOtpSubmit = async () => {};
 
-  }
   return (
     <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
       <Text>Enter Otp</Text>
@@ -36,5 +35,5 @@ const styles = StyleSheet.create({
     fontWeight: "700"
   },
   enterPhoneInputBox: {}
-  });
+});
 export default LoginScreenForExistingUser;

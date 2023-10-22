@@ -14,7 +14,7 @@ const Input = ({
   name: string;
   // todo remove any from here
   control: any;
-  placeholder?: string
+  placeholder?: string;
 }) => {
   const {field} = useController({
     control,
@@ -49,7 +49,8 @@ const LoginScreenForNewUser = ({navigation}: Props) => {
   const handleSubmitPhoneNumber = async (data: any) => {
     // const response = await SubmitPhone(phoneNo);
     console.log(
-      "🚀 ~ file: login.tsx:14 ~ handleSubmitPhoneNumber ~ response:", data
+      "🚀 ~ file: login.tsx:14 ~ handleSubmitPhoneNumber ~ response:",
+      data
     );
   };
 
@@ -61,10 +62,18 @@ const LoginScreenForNewUser = ({navigation}: Props) => {
       <Text variant="headlineMedium" style={styles.loginContinueText}>
         Please fill the details to continue
       </Text>
-      <Input name="firstName" placeholder="Enter first name" control={control} />
+      <Input
+        name="firstName"
+        placeholder="Enter first name"
+        control={control}
+      />
       <Input name="lastName" placeholder="Enter last name" control={control} />
       <Input name="city" placeholder="Enter city" control={control} />
-      <Input name="email" placeholder="Enter email (optional)" control={control} />
+      <Input
+        name="email"
+        placeholder="Enter email (optional)"
+        control={control}
+      />
       <Input name="otp" placeholder="Enter otp" control={control} />
       {/* <TextInput
         style={styles.enterPhoneInputBox}
