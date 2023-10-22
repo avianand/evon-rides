@@ -24,6 +24,7 @@ import ProfileUser from "./src/Pages/Profile/profile.user";
 import LoginScreenForNewUser from "./src/Pages/Login/login.new";
 import LoginScreenForExistingUser from "./src/Pages/Login/login.existing";
 import LoginScreen from "./src/Pages/Login/login";
+import WebsiteDetails from "./src/Pages/Profile/website.details";
 import {LightTheme, DarkTheme} from "./src/Styles/themes";
 import HomeScreenForGuestUser from "./src/Pages/Home/home.guest";
 import {fontConfig} from "./src/Styles/fontConfig";
@@ -60,6 +61,7 @@ export default function App() {
           <Stack.Screen name="Login new" component={LoginScreenForNewUser} />
           <Stack.Screen name="Profile user" component={ProfileUser} />
           <Stack.Screen name="Profile new" component={ProfileNewForUser} />
+          <Stack.Screen name="Website details" component={WebsiteDetails} />
           <Stack.Screen
             name="Login existing"
             component={LoginScreenForExistingUser}

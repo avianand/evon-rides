@@ -7,7 +7,8 @@ import {
   ScrollView,
   Image
 } from "react-native";
-import Logo from "../../../assets/images/logo.svg";
+import Logo from "../../../assets/images/svg.svg";
+// import Gif from "../../../assets/images/animated.gif";
 import {Avatar, Title, Card, IconButton, Divider} from "react-native-paper";
 // import SvgUri from "react-native-svg-uri";
 type Props = {
@@ -30,10 +31,10 @@ const ProfileNewForUser = ({navigation}: Props) => {
       {/* User Logo and Name */}
       <View style={styles.header}>
         {/* <IconButton size={80} iconColor="white" icon="cogs" /> */}
-        {/* <Image style={styles.logo} source={Logo} alt="App Logo" /> */}
+        {/* <Image style={{height: "100%", width: 200}} source={Gif} alt="App Logo" /> */}
         {/* <SvgUri width="200" height="200" source={{uri: Logo}} /> */}
-        <Logo height={50} width={50} />
-        <Title style={[styles.userName, styles.textBlue]}>GoRides</Title>
+        <Logo height={100} width={100} />
+        {/* <Title style={[styles.userName, styles.textBlue]}>GoRides</Title> */}
       </View>
 
       <ScrollView style={styles.scrollableContent}>
@@ -41,6 +42,22 @@ const ProfileNewForUser = ({navigation}: Props) => {
           <Card.Title
             title={data.phone}
             subtitle={data.email}
+            // eslint-disable-next-line react/no-unstable-nested-components
+            left={propsComp => <Avatar.Icon {...propsComp} icon="account" />}
+            // eslint-disable-next-line react/no-unstable-nested-components
+            right={propsComp => (
+              <IconButton {...propsComp} icon="chevron-right" />
+            )}
+          />
+        </TouchableOpacity>
+
+        <Divider />
+
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Website details")}>
+          <Card.Title
+            title="Website details"
+            subtitle="notify-me"
             // eslint-disable-next-line react/no-unstable-nested-components
             left={propsComp => <Avatar.Icon {...propsComp} icon="account" />}
             // eslint-disable-next-line react/no-unstable-nested-components
