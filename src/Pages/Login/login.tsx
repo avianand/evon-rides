@@ -1,6 +1,6 @@
 import * as React from "react";
 import {StyleSheet, View} from "react-native";
-import {Appbar, Button, Text, TextInput} from "react-native-paper";
+import {Button, Text, TextInput} from "react-native-paper";
 import {SubmitPhone} from "../../Api/authApis";
 import {HttpStatusCode} from "axios";
 
@@ -38,6 +38,7 @@ const LoginScreen = ({navigation}: Props) => {
       </Text>
       <TextInput
         style={styles.enterPhoneInputBox}
+        left={<TextInput.Affix text="+91 " />}
         placeholder="Enter phone number"
         textContentType="telephoneNumber"
         keyboardType="phone-pad"
@@ -51,25 +52,35 @@ const LoginScreen = ({navigation}: Props) => {
       {/* Based on response from api display existing or new user login form */}
       <View style={styles.buttonContainer}>
         <Button
-          contentStyle={{width: "100%", padding: 4}}
+          contentStyle={{width: 300, padding: 4}}
           labelStyle={{fontWeight: "600", fontSize: 18}}
           onPress={handleSubmitPhoneNumber}
           mode="contained">
           Continue
         </Button>
+        <View style={styles.space} />
         <Button
-          contentStyle={{width: "100%", padding: 4}}
+          contentStyle={{width: 300, padding: 4}}
           labelStyle={{fontWeight: "600", fontSize: 18}}
           onPress={() => navigation.navigate("Login new")}
           mode="contained">
           Login New user
         </Button>
+        <View style={styles.space} />
         <Button
-          contentStyle={{width: "100%", padding: 4}}
+          contentStyle={{width: 300, padding: 4}}
           labelStyle={{fontWeight: "600", fontSize: 18}}
           onPress={() => navigation.navigate("Login existing")}
           mode="contained">
           Login existing user
+        </Button>
+        <View style={styles.space} />
+        <Button
+          contentStyle={{width: 300, padding: 4}}
+          labelStyle={{fontWeight: "600", fontSize: 18}}
+          onPress={() => navigation.navigate("Profile user")}
+          mode="contained">
+          Profile
         </Button>
       </View>
     </View>
@@ -107,6 +118,10 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     marginTop: 100
+  },
+  space: {
+    width: 10, // or whatever size you need
+    height: 10
   }
 });
 

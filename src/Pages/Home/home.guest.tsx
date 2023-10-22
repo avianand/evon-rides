@@ -67,7 +67,7 @@ const HomeScreenForGuestUser = ({navigation}: Props) => {
   return (
     <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
       <View>
-        <Image style={styles.logo} source={Logo} alt="App Logo" />
+        <Logo height={80} width={80} />
       </View>
       <View style={styles.carbonEmissionBox}>
         <Text variant="displaySmall" style={styles.carbonEmissionText}>

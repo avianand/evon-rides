@@ -1,35 +1,36 @@
-
 import axios, {HttpStatusCode, InternalAxiosRequestConfig} from "axios";
+import {APP_RUNNING_MODE} from "./config";
+import {User} from "../Types/interfaces";
+import {getRefreshToken} from "../Api/authApis";
+import {devBackendBaseUrl} from "./urls";
+import {getCookie, setCookie} from "./functions";
 import {
-  APP_RUNNING_MODE,
-} from "./config";
-import { User } from "../Types/interfaces";
-import { getRefreshToken } from "../Api/authApis";
-import { devBackendBaseUrl } from "./urls";
-import { getCookie, setCookie } from "./functions";
-import { ACCESS_TOKEN_EXPIRY_DURATION_IN_DAYS, AUTH_COOKIES_DATA, REFRESH_TOKEN_EXPIRY_DURATION_IN_DAYS } from "./constants/constants";
+  ACCESS_TOKEN_EXPIRY_DURATION_IN_DAYS,
+  AUTH_COOKIES_DATA,
+  REFRESH_TOKEN_EXPIRY_DURATION_IN_DAYS
+} from "./constants/constants";
 
 const axiosInstance = axios.create({
   baseURL: devBackendBaseUrl,
-  timeout: 5000,
+  timeout: 5000
 });
 
 export const axiosNoAuth = axios.create({
   baseURL: devBackendBaseUrl,
   timeout: 5000,
   headers: {
-    Authorization: "NO_TOKEN",
-  },
+    Authorization: "NO_TOKEN"
+  }
 });
 
 axiosInstance.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     if (!config?.headers?.Authorization) {
       config.headers = config.headers ?? {
-        "Content-Type": "multipart/form-data",
+        "Content-Type": "multipart/form-data"
       };
       const accessToken = getCookie(
-        `${AUTH_COOKIES_DATA.accessToken}_${APP_RUNNING_MODE}`,
+        `${AUTH_COOKIES_DATA.accessToken}_${APP_RUNNING_MODE}`
       );
       if (accessToken) {
         config.headers.Authorization = `Bearer ${accessToken}`;
@@ -39,7 +40,7 @@ axiosInstance.interceptors.request.use(
     }
     return config;
   },
-  (error: any) => Promise.reject(error),
+  (error: any) => Promise.reject(error)
 );
 
 axiosInstance.interceptors.response.use(
@@ -59,12 +60,12 @@ axiosInstance.interceptors.response.use(
         setCookie(
           `${AUTH_COOKIES_DATA.refreshToken}_${APP_RUNNING_MODE}`,
           response.data.refreshToken,
-          REFRESH_TOKEN_EXPIRY_DURATION_IN_DAYS,
+          REFRESH_TOKEN_EXPIRY_DURATION_IN_DAYS
         );
         setCookie(
           `${AUTH_COOKIES_DATA.accessToken}_${APP_RUNNING_MODE}`,
           response.data.accessToken,
-          ACCESS_TOKEN_EXPIRY_DURATION_IN_DAYS,
+          ACCESS_TOKEN_EXPIRY_DURATION_IN_DAYS
         );
         return axiosInstance(prevRequest);
       }
@@ -72,7 +73,7 @@ axiosInstance.interceptors.response.use(
       return Promise.reject(new Error("please login again"));
     }
     return Promise.reject(error);
-  },
+  }
 );
 
 export default axiosInstance;

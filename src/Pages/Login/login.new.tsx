@@ -2,7 +2,7 @@ import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import * as React from "react";
 import {Button, Text, TextInput} from "react-native-paper";
 import {StyleSheet, View} from "react-native";
-import {Control, FieldValues, useController, useForm} from "react-hook-form";
+import { useController, useForm} from "react-hook-form";
 
 type Props = NativeStackScreenProps<any, "Login new">;
 
@@ -49,9 +49,9 @@ const LoginScreenForNewUser = ({navigation}: Props) => {
   const handleSubmitPhoneNumber = async (data: any) => {
     // const response = await SubmitPhone(phoneNo);
     console.log(
-      "🚀 ~ file: login.tsx:14 ~ handleSubmitPhoneNumber ~ response:",
-      data
+      "🚀 ~ file: login.tsx:14 ~ handleSubmitPhoneNumber ~ response:"
     );
+    navigation.navigate("Profile new");
   };
 
   return (
@@ -114,9 +114,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20
   },
   loginContinueText: {
+    fontSize: 20,
+    fontWeight: "700"
+  },
+  enterPhoneLabel: {
     fontSize: 14,
-    fontWeight: "500",
-    marginBottom: 30
+    fontWeight: "700",
+    marginBottom: 20
+  },
+  enterPhoneInputBox: {
+    width: "100%",
+    marginVertical: 50,
+    backgroundColor: "none"
   },
   buttonContainer: {
     display: "flex",
