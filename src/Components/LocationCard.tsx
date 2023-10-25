@@ -74,7 +74,7 @@ const LocationCard = ({
       <View style={[styles.defaultLocationCard, cardStyle]}>
         <View style={styles.group}>
           {/* //! todo - remove png */}
-          <Image
+          {/* <Image
             source={
               icon == "home"
                 ? require("../../../assets/images/clinic.png")
@@ -83,7 +83,7 @@ const LocationCard = ({
                 : require("../../../assets/images/Group162.png")
             }
             style={styles.image}
-          />
+          /> */}
         </View>
         <View style={styles.text}>
           <Text style={[styles.locationCardMainText, mainTextCardStyle]}>
