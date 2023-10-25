@@ -1,5 +1,5 @@
 import * as React from "react";
-import {StyleSheet, View} from "react-native";
+import {SafeAreaView, StatusBar, StyleSheet, View} from "react-native";
 import {Button, Text, TextInput} from "react-native-paper";
 import {SubmitPhone} from "../../Api/authApis";
 import {HttpStatusCode} from "axios";
@@ -26,64 +26,58 @@ const LoginScreen = ({navigation}: Props) => {
     }
   };
   return (
-    <View style={styles.container}>
-      <Text variant="displayLarge" style={styles.welcomeText}>
-        Welcome,
-      </Text>
-      <Text variant="headlineMedium" style={styles.loginContinueText}>
-        Log in to continue
-      </Text>
-      <Text variant="titleSmall" style={styles.enterPhoneLabel}>
-        Enter phone number for verification
-      </Text>
-      <TextInput
-        style={styles.enterPhoneInputBox}
-        left={<TextInput.Affix text="+91 " />}
-        placeholder="Enter phone number"
-        textContentType="telephoneNumber"
-        keyboardType="phone-pad"
-        maxLength={10}
-        value={phoneNo}
-        onChangeText={(text: string) => {
-          setphoneNo(text.replace(/[^0-9]/g, ""));
-        }}
-      />
+    <SafeAreaView style={styles.safeAreaView}>
+      <View style={styles.container}>
+        <Text variant="displayLarge" style={styles.welcomeText}>
+          Welcome,
+        </Text>
+        <Text variant="headlineMedium" style={styles.loginContinueText}>
+          Log in to continue
+        </Text>
+        <Text variant="titleSmall" style={styles.enterPhoneLabel}>
+          Enter phone number for verification
+        </Text>
+        <TextInput
+          style={styles.enterPhoneInputBox}
+          left={<TextInput.Affix text="+91 " />}
+          placeholder="Enter phone number"
+          textContentType="telephoneNumber"
+          keyboardType="phone-pad"
+          autoFocus
+          maxLength={10}
+          value={phoneNo}
+          onChangeText={(text: string) => {
+            setphoneNo(text.replace(/[^0-9]/g, ""));
+          }}
+        />
 
-      {/* Based on response from api display existing or new user login form */}
-      <View style={styles.buttonContainer}>
-        <Button
-          contentStyle={{width: 300, padding: 4}}
-          labelStyle={{fontWeight: "600", fontSize: 18}}
-          onPress={handleSubmitPhoneNumber}
-          mode="contained">
-          Continue
-        </Button>
-        <View style={styles.space} />
-        <Button
-          contentStyle={{width: 300, padding: 4}}
-          labelStyle={{fontWeight: "600", fontSize: 18}}
-          onPress={() => navigation.navigate("Login new")}
-          mode="contained">
-          Login New user
-        </Button>
-        <View style={styles.space} />
-        <Button
-          contentStyle={{width: 300, padding: 4}}
-          labelStyle={{fontWeight: "600", fontSize: 18}}
-          onPress={() => navigation.navigate("Login existing")}
-          mode="contained">
-          Login existing user
-        </Button>
-        <View style={styles.space} />
-        <Button
-          contentStyle={{width: 300, padding: 4}}
-          labelStyle={{fontWeight: "600", fontSize: 18}}
-          onPress={() => navigation.navigate("Profile user")}
-          mode="contained">
-          Profile
-        </Button>
+        {/* Based on response from api display existing or new user login form */}
+        <View style={styles.buttonContainer}>
+          <Button
+            style={styles.button}
+            labelStyle={{fontWeight: "600", fontSize: 18}}
+            onPress={handleSubmitPhoneNumber}
+            mode="contained">
+            Continue
+          </Button>
+          <Button
+            contentStyle={{width: "100%", padding: 4}}
+            labelStyle={{fontWeight: "600", fontSize: 18}}
+            onPress={() => navigation.navigate("Login new")}
+            mode="contained">
+            Login New user
+          </Button>
+          <Button
+            contentStyle={{width: "100%", padding: 4}}
+            labelStyle={{fontWeight: "600", fontSize: 18}}
+            onPress={() => navigation.navigate("Login existing")}
+            mode="contained">
+            Login existing user
+          </Button>
+          <View style={styles.space} />
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -91,6 +85,10 @@ const styles = StyleSheet.create({
   welcomeText: {
     fontSize: 28,
     fontWeight: "700"
+  },
+  safeAreaView: {
+    flex: 1,
+    paddingTop: StatusBar.currentHeight
   },
   container: {
     flex: 1,
@@ -122,6 +120,12 @@ const styles = StyleSheet.create({
   space: {
     width: 10, // or whatever size you need
     height: 10
+  },
+  button: {
+    paddingVertical: 8,
+    paddingHorizontal: 4,
+    borderRadius: 99,
+    width: "100%"
   }
 });
 

@@ -28,6 +28,7 @@ import WebsiteDetails from "./src/Pages/Profile/website.details";
 import {LightTheme, DarkTheme} from "./src/Styles/themes";
 import HomeScreenForGuestUser from "./src/Pages/Home/home.guest";
 import {fontConfig} from "./src/Styles/fontConfig";
+import HomeScreenForExistingUser from "./src/Pages/Home/home";
 
 const Stack = createNativeStackNavigator();
 
@@ -57,6 +58,10 @@ export default function App() {
       <NavigationContainer theme={LightThemeAdapt}>
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={HomeScreenForGuestUser} />
+          <Stack.Screen
+            name="User Home"
+            component={HomeScreenForExistingUser}
+          />
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Login new" component={LoginScreenForNewUser} />
           <Stack.Screen name="Profile user" component={ProfileUser} />

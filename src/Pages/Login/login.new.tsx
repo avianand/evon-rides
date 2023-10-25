@@ -1,8 +1,14 @@
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import * as React from "react";
 import {Button, Text, TextInput} from "react-native-paper";
-import {StyleSheet, View} from "react-native";
-import { useController, useForm} from "react-hook-form";
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  View
+} from "react-native";
+import {useController, useForm} from "react-hook-form";
 
 type Props = NativeStackScreenProps<any, "Login new">;
 
@@ -47,6 +53,10 @@ const LoginScreenForNewUser = ({navigation}: Props) => {
   });
 
   const handleSubmitPhoneNumber = async (data: any) => {
+    console.log(
+      "🚀 ~ file: login.new.tsx:50 ~ handleSubmitPhoneNumber ~ data:",
+      data
+    );
     // const response = await SubmitPhone(phoneNo);
     console.log(
       "🚀 ~ file: login.tsx:14 ~ handleSubmitPhoneNumber ~ response:"
@@ -55,27 +65,39 @@ const LoginScreenForNewUser = ({navigation}: Props) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text variant="displayLarge" style={styles.welcomeText}>
-        One more step...
-      </Text>
-      <Text variant="headlineMedium" style={styles.loginContinueText}>
-        Please fill the details to continue
-      </Text>
-      <Input
-        name="firstName"
-        placeholder="Enter first name"
-        control={control}
-      />
-      <Input name="lastName" placeholder="Enter last name" control={control} />
-      <Input name="city" placeholder="Enter city" control={control} />
-      <Input
-        name="email"
-        placeholder="Enter email (optional)"
-        control={control}
-      />
-      <Input name="otp" placeholder="Enter otp" control={control} />
-      {/* <TextInput
+    <SafeAreaView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollView}>
+        <Text variant="displayLarge" style={styles.welcomeText}>
+          One more step...
+        </Text>
+        <Text variant="headlineMedium" style={styles.loginContinueText}>
+          Please fill the details to continue
+        </Text>
+        <Input
+          name="firstName"
+          placeholder="Enter first name"
+          control={control}
+        />
+        <Input
+          name="lastName"
+          placeholder="Enter last name"
+          control={control}
+        />
+        <Input name="city" placeholder="Enter city" control={control} />
+        <Input
+          name="email"
+          placeholder="Enter email (optional)"
+          control={control}
+        />
+        <Input name="otp" placeholder="Enter otp" control={control} />
+        <Button
+          style={styles.resendButton}
+          labelStyle={{fontWeight: "600", fontSize: 18}}
+          onPress={handleSubmit(handleSubmitPhoneNumber)}
+          mode="text">
+          resend otp
+        </Button>
+        {/* <TextInput
         style={styles.enterPhoneInputBox}
         placeholder="Enter phone number"
         textContentType="telephoneNumber"
@@ -87,31 +109,40 @@ const LoginScreenForNewUser = ({navigation}: Props) => {
         }}
       /> */}
 
-      {/* Based on response from api display existing or new user login form */}
-      <View style={styles.buttonContainer}>
+        {/* Based on response from api display existing or new user login form */}
         <Button
-          contentStyle={{width: "100%", padding: 4}}
+          style={styles.button}
           labelStyle={{fontWeight: "600", fontSize: 18}}
           onPress={handleSubmit(handleSubmitPhoneNumber)}
           mode="contained">
           Continue
         </Button>
-      </View>
-    </View>
+        <Button
+          style={styles.button}
+          labelStyle={{fontWeight: "600", fontSize: 18}}
+          onPress={() => navigation.goBack()}
+          mode="outlined">
+          Back
+        </Button>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: StatusBar.currentHeight
+  },
   welcomeText: {
     fontSize: 24,
     fontWeight: "700"
   },
-  container: {
+  scrollView: {
     flex: 1,
     alignItems: "flex-start",
     justifyContent: "flex-start",
-    width: "100%",
-    paddingHorizontal: 20
+    marginHorizontal: 20
   },
   loginContinueText: {
     fontSize: 20,
@@ -137,6 +168,18 @@ const styles = StyleSheet.create({
     backgroundColor: "none",
     width: "100%",
     marginVertical: 12
+  },
+  button: {
+    marginTop: 20,
+    paddingVertical: 8,
+    paddingHorizontal: 4,
+    borderRadius: 99,
+    width: "100%"
+  },
+  resendButton: {
+    width: "100%",
+    paddingVertical: 8,
+    textDecorationLine: "underline"
   }
 });
 

@@ -1,11 +1,6 @@
 import {axiosNoAuth} from "../Utils/axiosInstance";
 import {URLS} from "../Utils/urls";
 
-export const getRefreshToken = async () => {
-  const response = await axiosNoAuth.get("refreshToken");
-  return response;
-};
-
 /**
  * @description : Submit phone no for login
  * @param phone : Phone number of the user
