@@ -85,7 +85,7 @@ axiosInstance.interceptors.response.use(
           prevRequest.headers.Authorization = `Bearer ${newAccessToken}`;
           return await axiosInstance(prevRequest);
         } catch (refreshError) {
-          // Remove cookies in browser
+          // Remove cookies in app
           //  clearStoredUser();
 
           // Redirect to the login page
